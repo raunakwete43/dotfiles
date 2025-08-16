@@ -1,0 +1,208 @@
+@import "mocha.css";
+* {
+  /* `otf-font-awesome` is required to be installed for icons */
+  font-family: "JetBrainsMono Nerd Font Propo";
+  font-size: 16px;
+}
+
+window#waybar {
+  /* background-color: #1e1e2e; */
+  /* color: #ffffff; */
+	/* border: 2px solid @lavender; */
+	/* border-radius: 10; */
+  background: transparent;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
+
+window#waybar.termite {
+  background-color: #3f3f3f;
+}
+
+window#waybar.chromium {
+  background-color: #000000;
+  border: none;
+}
+
+button {
+  /* Use box-shadow instead of border so the text isn't offset */
+  box-shadow: inset 0 -3px transparent;
+  /* Avoid rounded borders under each button name */
+  border: none;
+  border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+
+
+
+#workspaces button {
+  padding: 0 5px;
+  background-color: transparent;
+  margin: 2px;
+}
+
+#workspaces button.persistent {
+  color: @yellow;
+}
+
+#workspaces button.empty {
+  color: @surface2;
+}
+
+#workspaces button.visible {
+  color: @green;
+}
+
+#workspaces button.active {
+  color: @sapphire;
+}
+
+#workspaces button.urgent {
+  background-color: @red;
+  border-radius: 1em;
+  color: @text;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#keyboard-state,
+#backlight,
+#tray,
+#custom,
+#mpd {
+  padding: 0 10px;
+  color: @peach;
+  /* background-color: @surface0; */
+  background-color: transparent;
+  font-weight: normal;
+}
+
+#memory {
+  color: @yellow;
+}
+
+#backlight {
+  /* border-top-left-radius: 5em 5em; */
+  /* border-bottom-left-radius: 5em 5em; */
+  color: @teal;
+}
+
+#battery {
+  border-top-left-radius: 5em 5em;
+  border-bottom-left-radius: 5em 5em;
+  color: @green;
+}
+
+#custom-battery-power {
+  color: @blue;
+  font-weight: bold;
+}
+
+#custom-battery-power.charging {
+  color: @green;
+}
+
+#custom-battery-power.discharging {
+  color: @peach;
+}
+
+#custom-battery-power.error {
+  color: @red;
+}
+
+#window,
+#workspaces {
+  margin: 0 4px;
+  background-color: transparent;
+  font-weight: normal;
+  font-style: oblique;
+  border-radius: 5em / 5em;
+  padding: 0 10px;
+  color: @peach;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+  margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+  margin-right: 0;
+}
+
+#clock {
+  color: @mauve;
+}
+
+#tray {
+  border-top-right-radius: 5em 5em;
+  border-bottom-right-radius: 5em 5em;
+}
+
+@keyframes blink {
+  to {
+    background-color: #ffffff;
+    color: #000000;
+  }
+}
+
+label:focus {
+  background-color: #000000;
+}
+
+#network.disconnected {
+  background-color: #f53c3c;
+}
+
+#pulseaudio {
+  /* border-top-left-radius: 5em 5em; */
+  /* border-bottom-left-radius: 5em 5em; */
+  color: @pink;
+}
+
+#pulseaudio.muted {
+  background-color: #90b1b1;
+  color: #2a5c45;
+}
+
+#temperature.critical {
+  background-color: #eb4d4b;
+}
+
+#temperature {
+  color: @green;
+}
+
+#keyboard-state {
+  padding: 0 0px;
+  min-width: 16px;
+  color: @mauve;
+}
+
+#keyboard-state > label {
+  padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+  background: rgba(0, 0, 0, 0.2);
+}

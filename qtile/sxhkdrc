@@ -1,0 +1,283 @@
+#################################################################
+# KEYBOARD BINDINGS FOR ANY TWM
+#################################################################
+
+#################################################################
+# SUPER + FUNCTION KEYS
+#################################################################
+
+#Browser
+# super + w
+#     brave-browser
+
+#Incognito
+super + shift + w
+    brave --incognito
+
+
+#xfce4-terminal
+ctrl + alt + t
+    kitty -e tmux
+
+
+#Conky-toggle
+#super + c
+#    conky-toggle
+
+#Htop
+#super + h
+#    urxvt 'htop task manager' -e htop
+
+#archlinux-logout
+# super + x
+#     bash ~/Downloads/scripts/powermenu.sh
+
+super + x
+    bash ~/.config/rofi/scripts/powermenu_t1
+
+#Rofi theme selector
+super + r
+    rofi-theme-selector
+
+#Xkill
+super + Escape
+    xkill
+
+#Keyboard dependent
+#################################################################
+# SUPER + SHIFT KEYS
+#################################################################
+
+#File-Manager
+super + shift + Return
+	thunar
+
+#Keyboard dependent
+#File-Manager
+super + shift + KP_Enter
+	thunar
+
+#dmenu
+super + shift + d
+	dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'JetBrainsMono Nerd Font:bold:pixelsize=18'
+
+#rofi large
+# super + d
+    # rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/arco-chadwm/rofi/launcher2.rasi
+
+# super + d
+#     xfce4-appfinder
+
+#reload sxhkd:
+super + shift + s
+	pkill -USR1 -x sxhkd
+
+
+#################################################################
+# CONTROL + ALT KEYS
+################################################ #################
+
+#Spotify
+# ctrl + alt + s
+#     bash ~/Downloads/scripts/spotify.sh
+
+#Spotify
+ctrl + alt + s
+    bash ~/Downloads/scripts/spotify_flat.sh
+
+#st
+ctrl + alt + Return
+    st
+
+
+#################################################################
+# ALT + ... KEYS
+#################################################################
+
+#Wallpaper trash
+# alt + t
+#     variety -t
+#
+# #Wallpaper next
+# alt + n
+#     variety -n
+#
+# #Wallpaper previous
+# alt + p
+#     variety -p
+#
+# #Wallpaper favorite
+# alt + f
+#     variety -f
+#
+# #Wallpaper previous
+# alt + Left
+#     variety -p
+#
+# #Wallpaper next
+# alt + Right
+#     variety -n
+#
+# #Wallpaper toggle-pause
+# alt + Up
+#     variety --toggle-pause
+#
+# #Wallpaper resume
+# alt + Down
+#     variety --resume
+#
+#Xfce4-appfinder
+# alt + F2
+#     xfce4-appfinder --collapsed
+#
+# #Xfce4-appfinder
+# alt + F3
+#     xfce4-appfinder
+
+
+#################################################################
+#VARIETY KEYS WITH PYWAL
+#################################################################
+
+#Wallpaper trash
+# alt + shift + t
+#     variety -t && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+#
+# #Wallpaper next
+# alt + shift + n
+#     variety -n && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+#
+# #Wallpaper previous
+# alt + shift + p
+#     variety -p && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+#
+# #Wallpaper favorite
+# alt + shift + f
+#     variety -f && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+#
+# #Wallpaper update
+# alt + shift + u
+#     wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+#
+#################################################################
+# CONTROL + SHIFT KEYS
+#################################################################
+
+#Xcfe4-TaskManager
+# ctrl + shift + Escape
+#     xfce4-taskmanager
+
+
+#################################################################
+#     SCREENSHOTS
+#################################################################
+
+#Scrot
+# Print
+#      scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/Screenshots'
+
+#screeenshooter
+ctrl + Print
+     xfce4-screenshooter
+
+#Gnome-Screenshot
+# ctrl + shift + Print
+#      gnome-screenshot -i
+#
+# #flameshot
+# ctrl + super + Print
+#      flameshot gui
+
+#################################################################
+#     FUNCTION KEYS
+#################################################################
+
+#xfce4-terminal dropdown
+# F12
+#     xfce4-terminal --drop-down
+
+
+#################################################################
+#     MULTIMEDIA KEYS
+#################################################################
+
+#Raises volume
+# XF86AudioRaiseVolume
+#     amixer -D pulse set Master 2%+
+#
+# #Lowers volume
+# XF86AudioLowerVolume
+#     amixer -D pulse set Master 2%-
+#
+# #Mute
+# XF86AudioMute
+#     amixer -D pulse set Master 1+ toggle
+
+#Increases Brightness
+XF86MonBrightnessUp
+    brightnessctl s 5%+
+
+#Decreases Brightness
+XF86MonBrightnessDown
+    brightnessctl s 5%-
+
+#Playerctl works for Pragha, Spotify and others
+#Delete the line for playerctl if you want to use mpc
+#and replace it with the corresponding code
+#mpc works for e.g.ncmpcpp
+#mpc toggle
+#mpc next
+#mpc prev
+#mpc stop
+
+#PLAY
+
+ctrl + shift + p
+    playerctl play-pause                                                                    ─╯
+
+XF86AudioPlay
+    playerctl play-pause
+
+#Next
+XF86AudioNext
+    playerctl next
+
+#previous
+XF86AudioPrev
+    playerctl previous
+
+#Stop
+XF86AudioStop
+    playerctl stop
+
+#Brightness up
+# XF86MonBrightnessUp
+#     xbacklight -inc 10
+#
+# #Brightness down
+# XF86MonBrightnessDown
+#     xbacklight -dec 10
+
+
+#################################################################
+#################################################################
+##################   DESKTOP SPECIFIC    ########################
+#################################################################
+#################################################################
+
+#################################################################
+# CTRL + ALT KEYS
+#################################################################
+
+#Picom Toggle
+ctrl + alt + o
+    ~/.config/arco-chadwm/scripts/picom-toggle.sh
+
+#Toggle Touchpad
+XF86TouchpadToggle
+	bash /home/manupro85/Downloads/scripts/touchpad.sh
+
+
+#ColorPicker
+# super + shift + p
+#     bash ~/.config/arco-chadwm/scripts/ob-colorpicker

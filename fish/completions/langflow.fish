@@ -1,0 +1,1 @@
+complete --command langflow --no-files --arguments "(env _LANGFLOW_COMPLETE=complete_fish _TYPER_COMPLETE_FISH_ACTION=get-args _TYPER_COMPLETE_ARGS=(commandline -cp) langflow)" --condition "env _LANGFLOW_COMPLETE=complete_fish _TYPER_COMPLETE_FISH_ACTION=is-args _TYPER_COMPLETE_ARGS=(commandline -cp) langflow"

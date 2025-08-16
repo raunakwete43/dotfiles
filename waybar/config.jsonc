@@ -1,0 +1,315 @@
+{
+  "layer": "top",
+  // Waybar at top layer
+  "position": "top",
+  // top|left|bottom|right
+  "margin": "5 10 0 10",
+  // "height": 20, // Waybar height (to be removed for auto height)
+  // "width": 1280, // Waybar width
+  //"spacing": 4, // Gaps between modules (4px)
+  // Choose the order of the modules
+  "reload_style_on_change": false,
+  "modules-left": [
+    "hyprland/window"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "battery",
+    "custom/battery-power",
+    "backlight",
+    "pulseaudio",
+    "cpu",
+    "memory",
+    "temperature",
+    "network",
+    "clock",
+    // "custom/notification",
+    "tray"
+  ],
+  // "tray"
+
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 14,
+    "icon-theme": "Paprius",
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close"
+  },
+
+  // Modules configuration
+  // "hyprland/workspaces": {
+  //   // "icon-size": 20,
+  //   // "format": "<span font='18px'>{icon}</span>",
+  //   "format": "{icon}",
+  //   "persistent_workspaces": {
+  //     "1": [],
+  //     "2": [],
+  //     "3": [],
+  //     "4": [],
+  //     "5": [],
+  //     "6": [],
+  //     "7": [],
+  //     "8": [],
+  //     "9": []
+  //   },
+  // "format-icons":{
+  //     // 
+  //     "focused": "◎ ",
+  //     "default": "○ ",
+  //     "empty": "○ ",
+  //     "active": "◉ "
+  // }
+  // },
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "format-icons": {
+      "urgent": "󰀨",
+      "active": "",
+      "default": ""
+    },
+    "persistent-workspaces": {
+      "*": 5
+    },
+
+    "sort-by-number": true
+  },
+
+  //"hyprland/workspaces": {
+  //  "format": "{icon}",
+  //  // ◎ ◉ 
+  //  "format-icons": {
+  //   "active": " ",
+  //   "default": "○",
+  //   "empty": "○",
+  //   "persistent": "◉"
+  //  },
+  //  "persistent-workspaces": {
+  //     "*": 5
+  //  }
+  //},
+
+  "keyboard-state": {
+    "numlock": true,
+    "capslock": true,
+    "format": "{icon} {name}",
+    "format-icons": {
+      "locked": "",
+      "unlocked": ""
+    }
+  },
+
+  "hyprland/window": {
+    "format": "➡ {}",
+    "icon": true,
+    //"separate-outputs": true
+  },
+
+  "mpd": {
+    "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+    "format-disconnected": "Disconnected ",
+    "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+    "unknown-tag": "N/A",
+    "interval": 2,
+    "consume-icons": {
+      "on": " "
+    },
+    "random-icons": {
+      "off": "<span color=\"#f53c3c\"></span> ",
+      "on": " "
+    },
+    "repeat-icons": {
+      "on": " "
+    },
+    "single-icons": {
+      "on": "1 "
+    },
+    "state-icons": {
+      "paused": "",
+      "playing": ""
+    },
+    "tooltip-format": "MPD (connected)",
+    "tooltip-format-disconnected": "MPD (disconnected)"
+  },
+
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+
+  "clock": {
+    "format": "  {:%I:%M %p }",
+    "tooltip-format": "<big>{:%e %B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": " {:%a,%e %b %y }"
+  },
+
+  "cpu": {
+    "format": "  {usage}%",
+    "interval": 5,
+    "tooltip": false
+  },
+
+  "memory": {
+    "format": "  {used:.2f} GiB ",
+    "format-alt": "  {avail:.2f} GiB ", 
+    "tooltip-format": "Memory Usage\n\nTotal: {total:.2f} GiB\nUsed: {used:.2f} GiB\nAvailable: {avail:.2f} GiB\n\nSwap Usage\n\nTotal: {swapTotal:.2f} GiB\nUsed: {swapUsed:.2f} GiB\nAvailable: {swapAvail:.2f} GiB",	
+  },
+
+  "temperature": {
+    // "thermal-zone": 2,
+    "hwmon-path": "/sys/class/hwmon/hwmon6/temp1_input",
+    "interval": 5,
+    "critical-threshold": 80,
+    "format-critical": " {temperatureC}°C",
+    "format": " {temperatureC}°C",
+    "format-icons": ["", ""]
+    // "format-icons": ["", "", ""]
+  },
+
+  "backlight": {
+    "device": "amdgpu_bl1",
+    "interval": 100,
+    "format": "{icon} {percent}% ",
+    "on-scroll-up": "brightnessctl set 1+%",
+    "on-scroll-down": "brightnessctl set 1-%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+
+  "battery": {
+    "bat": "BAT1",
+    "adapter": "ACAD",
+    "design-capacity": true,
+    "states": {
+      "good": 90,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon}  {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+
+  "network": {
+    // "interface": "wlp2*", // (Optional) To force the use of this interface
+    "format-wifi": "  {essid}",
+    "format-ethernet": " {ipaddr}/{cidr}",
+    "tooltip-format": " {ifname} via {gwaddr}",
+    "format-linked": " {ifname} (No IP)",
+    "format-disconnected": "⚠ Disconnected",
+    //"format-alt": "{ifname}: {ipaddr}/{cidr}"
+    "on-click": "networkmanager_dmenu"
+  },
+
+  "pulseaudio": {
+    "tooltip": false,
+    "scroll-step": 2,
+    "interval": 100,
+    "format": "{icon}  {volume}%",
+    "format-muted": "{icon}  {volume}%",
+    "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+    "format-bluetooth": "{icon}  {volume} %",
+    "format-muted": "󰸈 ",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "󰸈 ",
+        "",
+        "",
+        ""
+      ]
+    }
+  },
+
+  "tray": {
+    "icon-size": 20,
+    "spacing": 10
+  },
+
+  "custom/media": {
+    "format": "{icon} {}",
+    "return-type": "json",
+    "max-length": 40,
+    "format-icons": {
+      "spotify": "",
+      "default": "🎜"
+    },
+    "escape": true,
+    "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null",
+    // Script in resources folder
+    // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+  },
+
+
+
+  "bluetooth": {
+    "format": " {status}",
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+  },
+
+
+
+  "custom/battery-power": {
+    "format": " {} ",
+    "return-type": "json",
+    "interval": 2,
+    "exec": "/home/manu/.config/waybar/battery-power.py",
+    "tooltip": true
+  },
+
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  }
+}

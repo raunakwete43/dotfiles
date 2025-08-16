@@ -1,0 +1,183 @@
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+end
+function starship_transient_prompt_func
+  starship module character
+end
+function starship_transient_rprompt_func
+  starship module time
+end
+
+starship init fish | source
+enable_transience
+
+# Set up fzf key bindings
+fzf --fish | source
+
+#PATH
+set PATH /usr/sbin $PATH
+set PATH $HOME/.cargo/bin/ $PATH
+set PATH /usr/local/go/bin $PATH
+set PATH $HOME/go/bin $PATH
+set PATH $HOME/.config/emacs/bin/ $PATH
+
+alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
+alias nvim-deps='NVIM_APPNAME="nvim-deps" nvim'
+alias nv='nvim-kickstart'
+alias nd='nvim-deps'
+alias rm='trash'
+alias zbinds="bash ~/Downloads/scripts/zbinds"
+alias emc="emacsclient -c -a 'emacs'"
+alias zed="zeditor ."
+
+#Aliases
+alias traffic='~/Documents/new1.sh wlp1s0'
+alias automute='~/Downloads/scripts/automute.sh'
+alias enbar='~/Downloads/scripts/dwmblocks.sh'
+alias extract='~/Downloads/scripts/extract.sh'
+alias 8086='~/.cargo/bin/emulator_8086'
+
+# Python
+alias py3='python3'
+alias activate_fish='source ~/.config/fish/config.fish'
+alias lazygit='~/go/bin/lazygit'
+alias gemini_bot='cd /mnt/590E8F62592868DC/Projects/Python/gemini/src && /mnt/590E8F62592868DC/Projects/Python/gemini/venv/bin/streamlit run /mnt/590E8F62592868DC/Projects/Python/gemini/src/app1.py'
+
+#list
+alias ls='ls --color=auto'
+alias la='ls -a'
+alias ll='ls -all --color=auto'
+alias l='ls'
+alias l.="ls -A | egrep '^\.'"
+alias listdir="ls -d */ > list"
+
+#speedtest
+alias speed='~/Downloads/scripts/speedtest'
+
+
+
+
+#fix obvious typo's
+alias cd..='cd ..'
+# alias pdw='pwd'
+alias udpate='sudo pacman -Syyu'
+
+
+## Colorize the grep command output for ease of use (good for log files)##
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+#readable output
+alias df='df -h'
+
+#ncdu
+alias ncdu='ncdu --color dark-bg'
+
+#hardware info --short
+alias hw="hwinfo --short"
+
+#audio check pulseaudio or pipewire
+alias audio="pactl info | grep 'Server Name'"
+
+#check vulnerabilities microcode
+alias microcode='grep . /sys/devices/system/cpu/vulnerabilities/*'
+
+#check cpu
+alias cpu="cpuid -i | grep uarch | head -n 1"
+
+#get fastest mirrors in your neighborhood
+alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+alias mirrord="sudo reflector --latest 30 --number 10 --sort delay --save /etc/pacman.d/mirrorlist"
+alias mirrors="sudo reflector --latest 30 --number 10 --sort score --save /etc/pacman.d/mirrorlist"
+alias mirrora="sudo reflector --latest 30 --number 10 --sort age --save /etc/pacman.d/mirrorlist"
+#our experimental - best option for the moment
+alias mirrorx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 5 --sort rate --protocol https --save /etc/pacman.d/mirrorlist"
+alias mirrorxx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist"
+alias ram='rate-mirrors --allow-root --disable-comments arch | sudo tee /etc/pacman.d/mirrorlist'
+alias rams='rate-mirrors --allow-root --disable-comments --protocol https arch  | sudo tee /etc/pacman.d/mirrorlist'
+
+#mounting the folder Public for exchange between host and guest on virtualbox
+alias vbm="sudo /usr/local/bin/arcolinux-vbox-share"
+
+
+#youtube download
+# alias yta-aac="yt-dlp --extract-audio --audio-format aac "
+# alias yta-best="yt-dlp --extract-audio --audio-format best "
+# alias yta-flac="yt-dlp --extract-audio --audio-format flac "
+# alias yta-mp3="yt-dlp --extract-audio --audio-format mp3 "
+# alias ytv-best="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 "
+
+#Recent Installed Packages
+alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
+alias riplong="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -3000 | nl"
+
+
+#Cleanup orphaned packages
+alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
+
+# This will generate a list of explicitly installed packages
+# alias list="sudo pacman -Qqe"
+# #This will generate a list of explicitly installed packages without dependencies
+# alias listt="sudo pacman -Qqet"
+# # list of AUR packages
+# alias listaur="sudo pacman -Qqem"
+# add > list at the end to write to a file
+
+# install packages from list
+# pacman -S --needed - < my-list-of-packages.txt
+
+#clear
+alias clean="clear; seq 1 $(tput cols) | sort -R | sparklines | lolcat"
+
+#search content with ripgrep
+alias rg="rg --sort path"
+
+#get the error messages from journalctl
+alias jctl="journalctl -p 3 -xb"
+
+
+# Created by `pipx` on 2023-11-18 14:19:30
+set PATH $PATH /home/manupro85/.local/bin
+set PATH $PATH /home/manupro85/.jdks/openjdk-21.0.1/bin/
+set PATH $PATH /home/manupro85/Android/Sdk/build-tools/34.0.0/
+set PATH $PATH /home/manupro85/Android/Sdk/platforms/android-34/
+set PATH $PATH /home/manupro85/Android/Sdk/platform-tools/
+set PATH $PATH /home/manupro85/Downloads/flutter/bin/
+set PATH $PATH /opt/android-sdk/cmdline-tools/latest/bin/
+
+# Python venv function
+function pyenv
+    set env_name $argv[1]
+
+    # Check if the environment name is provided
+    if test -z "$env_name"
+        echo "Usage: pyenv <env_name>"
+        return
+    end
+
+    # Create the directory structure
+    mkdir -p $env_name/src
+
+    # Activate virtual environment and display a message
+    echo "Creating virtual environment for $env_name..."
+    uv venv $env_name/.venv
+    echo "Virtual environment $env_name created successfully."
+
+    # Provide instructions on activating the virtual environment
+    echo "Activating the virtual environment..."
+    source $env_name/.venv/bin/activate.fish
+    cd $env_name/src
+end
+
+
+function activate_pyvenv
+    set venv_path (dirname (which python))/activate.fish
+    if test -f $venv_path
+        source $venv_path
+        echo "Activated Python virtual environment."
+    else
+        echo "Error: Virtual environment activation script not found."
+    end
+end
+
