@@ -1,0 +1,16 @@
+return {}
+-- return {
+--   {
+--     'echasnovski/mini.nvim',
+--     version = false,
+--     enabled = false,
+--     opts = {},
+--     config = function(_, opts)
+--       require('mini.files').setup(opts.files)
+--     end,
+--     keys = { { '<leader>e', '<cmd>lua MiniFiles.open()<cr>', desc = 'Open File Explorer'
+--     } },
+--   }
+-- }
+-- require('mini.files').setup()
+-- vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua MiniFiles.open()<cr>', { noremap = true, silent = true })
