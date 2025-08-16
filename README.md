@@ -1,4 +1,4 @@
-# Manu’s Dotfiles
+# My Dotfiles
 
 ![License](https://img.shields.io/github/license/raunakwete43/dotfiles)
 ![Last Update](https://img.shields.io/github/last-commit/raunakwete43/dotfiles)
