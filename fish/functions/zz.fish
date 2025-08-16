@@ -1,4 +1,4 @@
-set -g ZZ_EXCLUDES ".cache" ".bun" "node_modules" ".local/share/nvim" ".cursor" ".vscode" ".git" "go/pkg"
+set -g ZZ_EXCLUDES ".cache" ".bun" "node_modules" ".local/share/nvim" ".cursor" ".vscode" ".git" "go/pkg" ".cargo"
 
 function zz
     set use_excludes 1
