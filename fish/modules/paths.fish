@@ -8,6 +8,7 @@ set PATH $HOME/.pub-cache/bin/ $PATH
 set PATH $HOME/Android/Sdk/cmdline-tools/latest/bin $PATH
 set PATH /opt/rocm/bin/ $PATH
 set PATH $PATH $HOME/Downloads/flutter/bin/
+set PATH $PATH $HOME/.npm-global/bin
 
 
 set PATH $PATH $HOME/.local/bin

@@ -66,7 +66,9 @@ end
 
 
 #fix obvious typo's
-alias cd..='cd ..'
+# alias cd..='cd ..'
+alias cd..="z .."
+alias cd="z"
 # alias pdw='pwd'
 
 ## Colorize the grep command output for ease of use (good for log files)##

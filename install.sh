@@ -49,6 +49,7 @@ link_dotfile() {
 }
 
 link_dotfile "$DOTFILES/fish" "$HOME/.config/fish"
+link_dotfile "$DOTFILES/tmux" "$HOME/.config/tmux"
 link_dotfile "$DOTFILES/nvim" "$HOME/.config/nvim"
 link_dotfile "$DOTFILES/hypr" "$HOME/.config/hypr"
 link_dotfile "$DOTFILES/yazi" "$HOME/.config/yazi"
@@ -67,6 +68,8 @@ link_dotfile "$DOTFILES/qBittorrent" "$HOME/.config/qBittorrent"
 
 link_dotfile "$DOTFILES/qtile" "$HOME/.config/qtile"
 link_dotfile "$DOTFILES/vlc" "$HOME/.config/vlc"
+
+link_dotfile "$DOTFILES/scripts" "$HOME/Downloads/scripts"
 
 # --- Done ---
 echo "=== Dotfiles linked successfully! ==="

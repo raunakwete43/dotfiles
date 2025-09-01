@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sxhkd -c ~/.config/arco-chadwm/sxhkd/sxhkdrc &

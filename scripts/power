@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# Paths to the scripts to run when power is plugged in or not
+# SCRIPT_ON=echo "ON"
+# SCRIPT_OFF=echo "OFF"
+# Function to get current power status
+get_power_status() {
+    # Check if the power status file exists
+    if [ -f "/sys/class/power_supply/AC0/online" ]; then
+        cat "/sys/class/power_supply/AC0/online"
+    else
+        echo "unknown"
+    fi
+}
+
+# Initial status check
+prev_status=$(get_power_status)
+if [ "$prev_status" == "1" ]; then
+    # Power is plugged in
+    prev_state="on"
+    # Run the on script only if initial status is on
+    echo "ON"
+elif [ "$prev_status" == "0" ]; then
+    # Power is not plugged in
+    prev_state="off"
+    # Run the off script only if initial status is off
+    echo "OFF"
+else
+    # Power status unknown
+    prev_state="unknown"
+fi
+
+# Infinite loop to monitor power status changes
+while true; do
+    current_status=$(get_power_status)
+    if [ "$current_status" == "1" ]; then
+        current_state="on"
+    elif [ "$current_status" == "0" ]; then
+        current_state="off"
+    else
+        current_state="unknown"
+    fi
+
+    # Check if there's a state change
+    if [ "$current_state" != "$prev_state" ]; then
+        if [ "$current_state" == "on" ]; then
+            # Power plugged in
+            echo "Power is plugged in. Running script_on.sh"
+        elif [ "$current_state" == "off" ]; then
+            # Power removed
+            echo "Power is removed. Running script_off.sh"
+        else
+            echo "Power status unknown."
+        fi
+        # Update previous state
+        prev_state=$current_state
+    fi
+
+    # Sleep for a few seconds before next check
+    sleep 5
+done

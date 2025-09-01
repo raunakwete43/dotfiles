@@ -10,3 +10,8 @@ end
 # direnv hook
 eval (direnv hook fish)
 
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /home/manu/.lmstudio/bin
+# End of LM Studio CLI section
+
