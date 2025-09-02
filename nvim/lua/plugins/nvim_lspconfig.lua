@@ -216,5 +216,11 @@ return {
       capabilities = nvlsp.capabilities,
       filetypes = { "yaml.ansible", "yaml.ansible.j2" },
     }
+
+    lspconfig.marksman.setup {
+      on_attach = nvlsp.on_attach,
+      capabilities = nvlsp.capabilities,
+      filetypes = { "markdown", "mdx", "md" },
+    }
   end,
 }
