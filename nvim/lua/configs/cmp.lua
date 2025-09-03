@@ -2,6 +2,8 @@ dofile(vim.g.base46_cache .. "cmp")
 
 local cmp = require "cmp"
 
+local lspkind = require("lspkind")
+
 local options = {
   completion = { completeopt = "menu,menuone" },
 
@@ -57,6 +59,14 @@ local options = {
     end, { "i", "s" }),
   },
 
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = "symbol",
+      max_width = 50,
+      symbol_map = { Supermaven = "" }
+    })
+  },
+
   sources = {
     { name = "nvim_lsp" },
     { name = "luasnip" },
@@ -75,6 +85,8 @@ local options = {
     },
     { name = "nvim_lua" },
     { name = "path" },
+    {name = "copilot"},
+    { name = "supermaven" },
   },
 }
 

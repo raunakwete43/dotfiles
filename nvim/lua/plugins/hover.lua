@@ -1,5 +1,10 @@
 return {}
 -- return {
+-- "karb94/neoscroll.nvim",
+-- event = "VimEnter",
+-- opts = {},
+-- }
+-- return {
 --   "lewis6991/hover.nvim",
 --   config = function()
 --     require("hover").setup {

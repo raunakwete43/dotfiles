@@ -3,6 +3,14 @@ return {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     event = "InsertEnter",
+    dependencies = {
+      {
+        "zbirenbaum/copilot-cmp",
+        config = function()
+          require("copilot_cmp").setup()
+        end
+      }
+    },
     config = function()
       local logger = {
         debug = function(msg)
@@ -11,7 +19,7 @@ return {
       }
       require('copilot').setup({
         panel = {
-          enabled = true,
+          enabled = false,
           auto_refresh = false,
           keymap = {
             jump_prev = "[[",
@@ -86,6 +94,21 @@ return {
         server_opts_overrides = {},
       })
     end,
-  }
+  },
 
+  {
+    "supermaven-inc/supermaven-nvim",
+    event = "InsertEnter",
+    config = function()
+      require("supermaven-nvim").setup({
+        keymaps = {
+          accept_suggestion = "<C-a>",
+          clear_suggestion = "<M-c>",
+          accept_word = "<C-l>",
+        },
+        disable_inline_completion = true,
+        disable_keymaps = false,
+      })
+    end,
+  }
 }
