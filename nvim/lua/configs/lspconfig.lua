@@ -81,7 +81,7 @@ M.capabilities = vim.tbl_extend('force', M.capabilities, cmp_capabilities or {})
 
 M.defaults = function()
   dofile(vim.g.base46_cache .. "lsp")
-  require("nvchad.lsp").diagnostic_config()
+  -- require("nvchad.lsp").diagnostic_config()
 
   require("lspconfig").lua_ls.setup {
     on_attach = M.on_attach,

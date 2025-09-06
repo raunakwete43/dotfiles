@@ -1,6 +1,5 @@
 # Personal aliases for fish shell
 alias pixel_refresh='~/Projects/Python/screen_refresh/.venv/bin/python3 ~/Projects/Python/screen_refresh/main.py'
-alias zed='zeditor'
 
 alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
 alias nvim-deps='NVIM_APPNAME="nvim-deps" nvim'
@@ -93,3 +92,7 @@ alias microcode='grep . /sys/devices/system/cpu/vulnerabilities/*'
 
 #get the error messages from journalctl
 alias jctl="journalctl -p 3 -xb"
+
+
+#NVME SMART Dashboard
+alias nvme-web-dash="~/Projects/Python/dashboard-nvme/.venv/bin/python3 ~/Projects/Python/dashboard-nvme/main.py"
