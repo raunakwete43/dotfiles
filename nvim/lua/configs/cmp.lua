@@ -85,8 +85,6 @@ local options = {
     },
     { name = "nvim_lua" },
     { name = "path" },
-    {name = "copilot"},
-    { name = "supermaven" },
   },
 }
 

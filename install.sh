@@ -68,6 +68,8 @@ link_dotfile "$DOTFILES/qBittorrent" "$HOME/.config/qBittorrent"
 
 link_dotfile "$DOTFILES/qtile" "$HOME/.config/qtile"
 link_dotfile "$DOTFILES/vlc" "$HOME/.config/vlc"
+link_dotfile "$DOTFILES/mpv" "$HOME/.config/mpv"
+link_dotfile "$DOTFILES/auto-cpufreq" "$HOME/.config/auto-cpufreq"
 
 link_dotfile "$DOTFILES/scripts" "$HOME/Downloads/scripts"
 

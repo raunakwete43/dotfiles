@@ -3,6 +3,7 @@
 -- local opt = vim.opt
 -- local o = vim.o
 local g = vim.g
+vim.opt.hlsearch = true
 --
 -- -------------------------------------- options ------------------------------------------
 -- o.laststatus = 3
@@ -88,6 +89,7 @@ vim.opt.showmode = false
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.breakindent = true
+vim.opt.showbreak = "↪ "
 
 vim.opt.undofile = true
 
@@ -118,3 +120,7 @@ vim.opt.ts = 2
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
+
+-- Extras
+vim.o.textwidth = 0
+vim.o.wrap = true

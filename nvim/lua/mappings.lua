@@ -1,124 +1,157 @@
-vim.opt.hlsearch = true
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-
 local map = vim.keymap.set
-local _, fzf = pcall(require, 'fzf-lua')
--- Diagnostic keymaps
-map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
-map('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-map('n', '<leader>dd', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
-map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-map("n", ";", ":", { desc = "CMD enter command mode" })
-map("i", "jk", "<ESC>")
 
-map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+-- Helper function for conditional requires
+local function safe_require(module)
+  local ok, result = pcall(require, module)
+  return ok and result or nil
+end
 
-map("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
-map("i", "<C-e>", "<End>", { desc = "move end of line" })
-map("i", "<C-h>", "<Left>", { desc = "move left" })
-map("i", "<C-l>", "<Right>", { desc = "move right" })
-map("i", "<C-j>", "<Down>", { desc = "move down" })
-map("i", "<C-k>", "<Up>", { desc = "move up" })
+local fzf = safe_require('fzf-lua')
 
-map("n", "<C-h>", "<C-w>h", { desc = "switch window left" })
-map("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
-map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
-map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
+-- ===============================================
+-- GENERAL MAPPINGS
+-- ===============================================
 
-map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
+-- Clear search highlighting
+map('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlights' })
 
-map("n", "<C-s>", "<cmd>w<CR>", { desc = "general save file" })
+-- Better command mode access
+map("n", ";", ":", { desc = "Enter command mode" })
+
+-- Save file
+map({ "n", "i", "v" }, "<C-s>", "<cmd>w<CR>", { desc = "Save file" })
+-- Copy Entire File
 map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "general copy whole file" })
 
--- map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "toggle line number" })
--- map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
-map("n", "<leader>ch", "<cmd>NvCheatsheet<CR>", { desc = "toggle nvcheatsheet" })
 
-map("n", "<leader>cm", function()
-  require("conform").format { lsp_fallback = true }
-end, { desc = "general format file" })
+-- ===============================================
+-- NAVIGATION & MOVEMENT
+-- ===============================================
 
--- global lsp mappings
-map("n", "<leader>dl", vim.diagnostic.setloclist, { desc = "LSP diagnostic loclist" })
--- map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
-map("n", "<leader>q", fzf.diagnostics_document, { desc = "Open diagnostic [Q]uickfix list" })
-map("n", "<leader>wq", fzf.diagnostics_workspace, { desc = "[W]orkspace Diagnostics" })
-map("n", "<leader>wg", fzf.lsp_live_workspace_symbols, { desc = "[W]orkspace [G]rep Symbols" })
+-- Insert mode navigation
+map("i", "<C-b>", "<ESC>^i", { desc = "Move to beginning of line" })
+map("i", "<C-e>", "<End>", { desc = "Move to end of line" })
+map("i", "<C-h>", "<Left>", { desc = "Move left" })
+map("i", "<C-l>", "<Right>", { desc = "Move right" })
+map("i", "<C-j>", "<Down>", { desc = "Move down" })
+map("i", "<C-k>", "<Up>", { desc = "Move up" })
 
-map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
+-- Window navigation
+map("n", "<C-h>", "<C-w>h", { desc = "Switch window left" })
+map("n", "<C-l>", "<C-w>l", { desc = "Switch window right" })
+map("n", "<C-j>", "<C-w>j", { desc = "Switch window down" })
+map("n", "<C-k>", "<C-w>k", { desc = "Switch window up" })
 
--- tabufline
-map("n", "<leader>bb", "<cmd>enew<CR>", { desc = "buffer new" })
+-- ===============================================
+-- BUFFER MANAGEMENT
+-- ===============================================
 
-map("n", "<tab>", function()
+map("n", "<leader>bb", "<cmd>enew<CR>", { desc = "New buffer" })
+map("n", "<Tab>", function()
   require("nvchad.tabufline").next()
-end, { desc = "buffer goto next" })
-
-map("n", "<S-tab>", function()
+end, { desc = "Next buffer" })
+map("n", "<S-Tab>", function()
   require("nvchad.tabufline").prev()
-end, { desc = "buffer goto prev" })
-
+end, { desc = "Previous buffer" })
 map("n", "<leader>bx", function()
   require("nvchad.tabufline").close_buffer()
-end, { desc = "buffer close" })
+end, { desc = "Close buffer" })
 
--- Comment
+-- Copy whole file
+map("n", "<leader>ya", ":%y+<CR>", { desc = "Copy entire file" })
+
+-- ===============================================
+-- DIAGNOSTICS & LSP
+-- ===============================================
+
+-- Note: [d and ]d are built-in in Neovim 0.10+
+map('n', '<leader>dd', vim.diagnostic.open_float, { desc = 'Show diagnostic details' })
+
+-- Use fzf-lua for better diagnostic navigation if available
+if fzf then
+  map("n", "<leader>q", fzf.diagnostics_document, { desc = "Document diagnostics" })
+  map("n", "<leader>wq", fzf.diagnostics_workspace, { desc = "Workspace diagnostics" })
+  map("n", "<leader>wg", fzf.lsp_live_workspace_symbols, { desc = "Workspace symbols" })
+else
+  -- Fallback to native diagnostics
+  map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Diagnostic quickfix" })
+end
+
+-- ===============================================
+-- FORMATTING & EDITING
+-- ===============================================
+
+-- Format file
+map("n", "<leader>fm", function()
+  require("conform").format { lsp_fallback = true }
+end, { desc = "Format file" })
+
+-- Comments (using better key combinations)
+map("n", "<leader>/", "gcc", { desc = "Toggle comment", remap = true })
+map("v", "<leader>/", "gc", { desc = "Toggle comment", remap = true })
+map("i", "<C-/>", "<ESC>gcc", { desc = "Toggle comment", remap = true })
 map({ "n", "i" }, "<C-_>", "gcc", { desc = "toggle comment", remap = true })
 map("v", "<C-_>", "gc", { desc = "toggle comment", remap = true })
 map({ "n", "i" }, "<C-/>", "gcc", { desc = "toggle comment", remap = true })
 map("v", "<C-/>", "gc", { desc = "toggle comment", remap = true })
 
--- nvimtree
--- map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
--- map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
--- map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })
+-- ===============================================
+-- TERMINAL
+-- ===============================================
 
+-- Terminal navigation
+map("t", "<C-x>", "<C-\\><C-N>", { desc = "Escape terminal mode" })
 
-
-map("n", "<leader>tt", function()
-  require("nvchad.themes").open()
-end, { desc = "telescope nvchad themes" })
-
-
-
--- terminal
-map("t", "<C-x>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
-
--- new terminals
-map("n", "<leader>tb", function()
+-- New terminals
+map("n", "<leader>th", function()
   require("nvchad.term").new { pos = "sp" }
-end, { desc = "terminal new horizontal term" })
+end, { desc = "New horizontal terminal" })
 
 map("n", "<leader>tv", function()
   require("nvchad.term").new { pos = "vsp" }
-end, { desc = "terminal new vertical term" })
-
+end, { desc = "New vertical terminal" })
 
 map("n", "<leader>tf", function()
   require("nvchad.term").new { pos = "float" }
-end, { desc = "terminal new floating term" })
+end, { desc = "New floating terminal" })
 
--- toggleable
+-- Toggle terminals
 map({ "n", "t" }, "<A-v>", function()
   require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" }
-end, { desc = "terminal toggleable vertical term" })
+end, { desc = "Toggle vertical terminal" })
 
 map({ "n", "t" }, "<A-h>", function()
   require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
-end, { desc = "terminal toggleable horizontal term" })
+end, { desc = "Toggle horizontal terminal" })
 
-map({ "n", "t" }, "<A-i>", function()
+map({ "n", "t" }, "<A-f>", function()
   require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
-end, { desc = "terminal toggle floating term" })
+end, { desc = "Toggle floating terminal" })
 
--- whichkey
-map("n", "<leader>wK", "<cmd>WhichKey <CR>", { desc = "whichkey all keymaps" })
+-- ===============================================
+-- FOLDING (UFO)
+-- ===============================================
 
+local ufo = safe_require('ufo')
+if ufo then
+  map('n', 'zR', ufo.openAllFolds, { desc = "Open all folds" })
+  map('n', 'zM', ufo.closeAllFolds, { desc = "Close all folds" })
+end
+
+-- ===============================================
+-- NVCHAD SPECIFIC
+-- ===============================================
+
+map("n", "<leader>ch", "<cmd>NvCheatsheet<CR>", { desc = "NvChad cheatsheet" })
+map("n", "<leader>tt", function()
+  require("nvchad.themes").open()
+end, { desc = "NvChad themes" })
+
+-- ===============================================
+-- WHICH-KEY
+-- ===============================================
+
+map("n", "<leader>wK", "<cmd>WhichKey<CR>", { desc = "Show all keymaps" })
 map("n", "<leader>wk", function()
   vim.cmd("WhichKey " .. vim.fn.input "WhichKey: ")
-end, { desc = "whichkey query lookup" })
-
-
-map('n', 'zR', require('ufo').openAllFolds)
-map('n', 'zM', require('ufo').closeAllFolds)
+end, { desc = "Search keymaps" })

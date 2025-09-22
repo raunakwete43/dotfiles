@@ -195,10 +195,10 @@
   "battery": {
     "bat": "BAT1",
     "adapter": "ACAD",
-    "design-capacity": true,
+    "design-capacity": false,
     "states": {
-      "good": 90,
-      "warning": 30,
+      "good": 70,
+      "warning": 40,
       "critical": 20
     },
     "format": "{icon}  {capacity}%",

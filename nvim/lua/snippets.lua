@@ -45,15 +45,29 @@ vim.hl.priorities.semantic_tokens = 95 -- Or any number lower than 100, treesitt
 vim.diagnostic.config {
   virtual_text = false,
   signs = {
-    text = { "󰅙", "", "󰋼", "󰌵" }
+    text = {
+      [vim.diagnostic.severity.ERROR] = "E",
+      [vim.diagnostic.severity.WARN]  = "W",
+      [vim.diagnostic.severity.INFO]  = "I",
+      [vim.diagnostic.severity.HINT]  = "H",
+    }
   },
   underline = true,
   update_in_insert = true,
   float = {
     source = true,
+    border = "rounded",
   },
   severity_sort = true,
 }
+
+vim.cmd([[
+  highlight DiagnosticUnderlineError gui=undercurl guisp=#f38ba8
+  highlight DiagnosticUnderlineWarn gui=undercurl guisp=#fab387
+  highlight DiagnosticUnderlineInfo gui=undercurl guisp=#74c7ec
+  highlight DiagnosticUnderlineHint gui=undercurl guisp=#a6e3a1
+]])
+
 
 -- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })

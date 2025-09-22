@@ -95,20 +95,4 @@ return {
       })
     end,
   },
-
-  {
-    "supermaven-inc/supermaven-nvim",
-    event = "InsertEnter",
-    config = function()
-      require("supermaven-nvim").setup({
-        keymaps = {
-          accept_suggestion = "<C-a>",
-          clear_suggestion = "<M-c>",
-          accept_word = "<C-l>",
-        },
-        disable_inline_completion = true,
-        disable_keymaps = false,
-      })
-    end,
-  }
 }

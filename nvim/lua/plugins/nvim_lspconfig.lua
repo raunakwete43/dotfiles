@@ -143,7 +143,10 @@ return {
     -- }
 
     lspconfig.basedpyright.setup({
-      on_attach = nvlsp.on_attach,
+      on_attach = function(client, bufnr)
+        -- client.handlers["textDocument/publishDiagnostics"] = function(...) end
+        nvlsp.on_attach(client, bufnr)
+      end,
       capabilities = nvlsp.capabilities,
       settings = {
         basedpyright = {
