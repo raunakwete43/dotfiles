@@ -3,6 +3,10 @@ export NPM_CONFIG_PREFIX=~/.npm-global
 # set PATH $HOME/.cargo/bin/ $PATH
 #PATH
 
+# Containerd
+set -Ux PATH /usr/local/bin $PATH
+export CONTAINERD_NAMESPACE=default
+
 export ANDROID_HOME=$HOME/Android/Sdk
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 

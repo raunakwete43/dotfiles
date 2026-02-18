@@ -1,6 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export CARAPACE_BRIDGES:zsh\x2cfish\x2cbash\x2cinshellisense
+SETUVAR --export --path PATH:/usr/local/bin\x1e/home/manu/\x2eopencode/bin\x1e/run/user/1000/fnm_multishells/15319_1771297224985/bin\x1e/home/manu/\x2ebun/bin\x1e/opt/rocm/bin/\x1e/home/manu/Android/Sdk/cmdline\x2dtools/latest/bin\x1e/home/manu/\x2epub\x2dcache/bin/\x1e/home/manu/Android/Sdk/platform\x2dtools/\x1e/home/manu/Android/Sdk/emulator/\x1e/home/manu/\x2econfig/emacs/bin/\x1e/home/manu/go/bin\x1e/usr/local/go/bin\x1e/usr/sbin\x1e/run/user/1000/fnm_multishells/1158_1771297046770/bin\x1e/home/manu/\x2ebun/bin\x1e/opt/rocm/bin/\x1e/home/manu/Android/Sdk/cmdline\x2dtools/latest/bin\x1e/home/manu/\x2epub\x2dcache/bin/\x1e/home/manu/Android/Sdk/platform\x2dtools/\x1e/home/manu/Android/Sdk/emulator/\x1e/home/manu/\x2econfig/emacs/bin/\x1e/home/manu/go/bin\x1e/usr/local/go/bin\x1e/usr/sbin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/usr/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl\x1e/opt/rocm/bin\x1e/home/manu/Downloads/flutter/bin/\x1e/home/manu/\x2enpm\x2dglobal/bin\x1e/home/manu/\x2elocal/bin\x1e/home/manu/\x2elmstudio/bin\x1e/home/manu/\x2elmstudio/bin\x1e/home/manu/Downloads/flutter/bin/\x1e/home/manu/\x2enpm\x2dglobal/bin\x1e/home/manu/\x2elocal/bin\x1e/home/manu/\x2elmstudio/bin\x1e/home/manu/\x2elmstudio/bin
 SETUVAR __fish_initialized:4300
 SETUVAR fish_greeting:\x1d
 SETUVAR fish_user_paths:/home/manu/\x2eopencode/bin

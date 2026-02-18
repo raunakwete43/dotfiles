@@ -10,6 +10,8 @@ end
 # direnv hook
 eval (direnv hook fish)
 
+eval "$(fnm env)"
+
 
 # Added by LM Studio CLI (lms)
 set -gx PATH $PATH /home/manu/.lmstudio/bin
