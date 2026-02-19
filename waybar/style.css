@@ -9,7 +9,7 @@ window#waybar {
   /* background-color: #1e1e2e; */
   /* color: #ffffff; */
 	/* border: 2px solid @lavender; */
-	/* border-radius: 10; */
+	border-radius: 10;
   background: transparent;
   transition-property: background-color;
   transition-duration: 0.5s;
