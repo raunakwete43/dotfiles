@@ -9,17 +9,14 @@
 
 /*****----- Configuration -----*****/
 configuration {
-    modi:                       "combi,run,filebrowser,files";
+	modi:                       "drun,run,filebrowser,window";
     show-icons:                 true;
-    display-combi:              " Apps";
+    display-drun:               " Apps";
     display-run:                " Run";
-    display-filebrowser:        " Explorer";
-    display-files:              "  Files";
-    combi-modi:                 "window,drun";
-    drun-display-format:        "{name}";
-    window-format:              "  {t}";
-    matching:                   "normal";
-    sort:                       false;
+    display-filebrowser:        " Files";
+    display-window:             " Windows";
+	drun-display-format:        "{name}";
+	window-format:              "{w} · {c} · {t}";
 }
 
 /*****----- Global Properties -----*****/

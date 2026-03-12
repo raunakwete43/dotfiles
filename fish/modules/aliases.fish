@@ -25,6 +25,7 @@ alias enbar='~/Downloads/scripts/dwmblocks.sh'
 alias extract='~/Downloads/scripts/extract.sh'
 alias 8086='~/.cargo/bin/emulator_8086'
 
+alias paru="yay"
 
 # Python
 alias py3='python3'

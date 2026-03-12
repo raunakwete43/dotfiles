@@ -23,6 +23,7 @@
     "cpu",
     "memory",
     "temperature",
+    // "network#speed",
     "network",
     "clock",
     // "custom/notification",
@@ -152,20 +153,21 @@
 
   "cpu": {
     "format": "  {usage}%",
-    "interval": 5,
+    "interval": 2,
     "tooltip": false
   },
 
   "memory": {
     "format": "  {used:.2f} GiB ",
+    "interval": 2,
     "format-alt": "  {avail:.2f} GiB ", 
     "tooltip-format": "Memory Usage\n\nTotal: {total:.2f} GiB\nUsed: {used:.2f} GiB\nAvailable: {avail:.2f} GiB\n\nSwap Usage\n\nTotal: {swapTotal:.2f} GiB\nUsed: {swapUsed:.2f} GiB\nAvailable: {swapAvail:.2f} GiB",	
   },
 
   "temperature": {
     // "thermal-zone": 2,
-    "hwmon-path": "/sys/class/hwmon/hwmon6/temp1_input",
-    "interval": 5,
+    "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
+    "interval": 2,
     "critical-threshold": 80,
     "format-critical": " {temperatureC}°C",
     "format": " {temperatureC}°C",
@@ -214,6 +216,14 @@
     ]
   },
 
+  "network#speed": {
+    "interval": 1,
+    "format-wifi": "󰇚 {bandwidthDownBytes}",
+    "format-ethernet": "󰇚 {bandwidthDownBytes}",
+    "format-disconnected": "󰇚 0B/s",
+    "tooltip": false
+  },
+
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
     "format-wifi": "  {essid}",
@@ -221,7 +231,7 @@
     "tooltip-format": "󰩠 {ifname} via {gwaddr}",
     "format-linked": "  {ifname} (No IP)",
     "format-disconnected": "⚠ Disconnected",
-    //"format-alt": "{ifname}: {ipaddr}/{cidr}"
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
     "on-click": "networkmanager_dmenu"
   },
 
@@ -288,7 +298,7 @@
     "format": " {} ",
     "return-type": "json",
     "interval": 2,
-    "exec": "/home/manu/.config/waybar/battery-power.py",
+    "exec": "/home/manu/.config/waybar/scripts/battery-power.py",
     "tooltip": true
   },
 
@@ -311,5 +321,15 @@
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
     "escape": true
+  },
+
+  "custom/media": {
+    "exec": "~/.config/waybar/scripts/media.sh",
+    "return-type": "json",
+    "interval": 2,
+    "on-click": "playerctl play-pause",
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous",
+    "format": "{icon} {text}"
   }
 }

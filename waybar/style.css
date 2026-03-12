@@ -206,3 +206,10 @@ label:focus {
 #keyboard-state > label.locked {
   background: rgba(0, 0, 0, 0.2);
 }
+
+#network.speed {
+  color: @yellow;
+  background-color: transparent;
+  padding: 0 10px;
+  font-weight: bold;
+}
