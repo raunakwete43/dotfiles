@@ -8,10 +8,9 @@ set -Ux PATH /usr/local/bin $PATH
 export CONTAINERD_NAMESPACE=default
 
 export ANDROID_HOME=$HOME/Android/Sdk
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+export JAVA_HOME=/usr/lib/jvm/default
 
 export ROCM_PATH=/opt/rocm
-export HSA_OVERRIDE_GFX_VERSION=11.0.0
 
 export CHROME_EXECUTABLE=/usr/bin/brave
 
