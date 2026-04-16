@@ -19,6 +19,9 @@ set -gx PATH $PATH /home/manu/.lmstudio/bin
 # opencode
 fish_add_path /home/manu/.opencode/bin
 
+# Cargo
+set -gx PATH $PATH /home/manu/.cargo/bin
+
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
