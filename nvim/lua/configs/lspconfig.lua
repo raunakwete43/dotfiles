@@ -33,16 +33,16 @@ M.on_attach = function(client, bufnr)
   map("n", "<leader>ds", fzf.lsp_document_symbols, opts "[D]ocument [S]ymbols")
   map("n", "<leader>ws", fzf.lsp_workspace_symbols, opts "[D]ocument [S]ymbols")
 
-  if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-    map("n", "<leader>th", function()
-      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-    end, opts "[T]oggle Inlay [H]ints")
-  end
+  --if client and client:supports_method("textDocument/inlayHint", event.buf) then
+  --  map("<leader>th", function()
+  --    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+  --  end, "[T]oggle Inlay [H]ints")
+  --end
 end
 
 -- disable semanticTokens
 M.on_init = function(client, _)
-  if client.supports_method "textDocument/semanticTokens" then
+  if client:supports_method "textDocument/semanticTokens" then
     client.server_capabilities.semanticTokensProvider = nil
   end
 end
@@ -67,23 +67,21 @@ M.capabilities.textDocument.completion.completionItem = {
   },
 }
 
-
 local cmp_capabilities = {}
-local success, cmp = pcall(require, 'blink.cmp')
+local success, cmp = pcall(require, "blink.cmp")
 
 if success then
   -- If 'blink.cmp' is available, get the LSP capabilities
   cmp_capabilities = cmp.get_lsp_capabilities() or {}
 end
 
-M.capabilities = vim.tbl_extend('force', M.capabilities, cmp_capabilities or {})
-
+M.capabilities = vim.tbl_extend("force", M.capabilities, cmp_capabilities or {})
 
 M.defaults = function()
   dofile(vim.g.base46_cache .. "lsp")
   -- require("nvchad.lsp").diagnostic_config()
 
-  require("lspconfig").lua_ls.setup {
+  vim.lsp.config("lua_ls", {
     on_attach = M.on_attach,
     capabilities = M.capabilities,
     on_init = M.on_init,
@@ -97,25 +95,40 @@ M.defaults = function()
         },
       },
     },
-    -- settings = {
-    --   Lua = {
-    --     diagnostics = {
-    --       globals = { "vim" },
-    --     },
-    --     workspace = {
-    --       library = {
-    --         vim.fn.expand "$VIMRUNTIME/lua",
-    --         vim.fn.expand "$VIMRUNTIME/lua/vim/lsp",
-    --         vim.fn.stdpath "data" .. "/lazy/ui/nvchad_types",
-    --         vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy",
-    --         "${3rd}/luv/library",
-    --       },
-    --       maxPreload = 100000,
-    --       preloadFileSize = 10000,
-    --     },
-    --   },
-    -- },
-  }
+  })
+  --  require("lspconfig").lua_ls.setup {
+  --    on_attach = M.on_attach,
+  --    capabilities = M.capabilities,
+  --    on_init = M.on_init,
+  --    settings = {
+  --      Lua = {
+  --        diagnostics = {
+  --          globals = { "vim" },
+  --        },
+  --        completion = {
+  --          callSnippet = "Replace",
+  --        },
+  --      },
+  --    },
+  --    -- settings = {
+  --    --   Lua = {
+  --    --     diagnostics = {
+  --    --       globals = { "vim" },
+  --    --     },
+  --    --     workspace = {
+  --    --       library = {
+  --    --         vim.fn.expand "$VIMRUNTIME/lua",
+  --    --         vim.fn.expand "$VIMRUNTIME/lua/vim/lsp",
+  --    --         vim.fn.stdpath "data" .. "/lazy/ui/nvchad_types",
+  --    --         vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy",
+  --    --         "${3rd}/luv/library",
+  --    --       },
+  --    --       maxPreload = 100000,
+  --    --       preloadFileSize = 10000,
+  --    --     },
+  --    --   },
+  --    -- },
+  --  }
 end
 
 return M

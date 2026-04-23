@@ -7,10 +7,6 @@ return {
   ensure_installed = { "lua", "luadoc", "comment" },
   auto_install = true,
 
-  modules = {
-    auto_install = true,
-  },
-
   highlight = {
     enable = true,
     use_languagetree = true,
