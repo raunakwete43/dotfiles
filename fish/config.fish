@@ -107,3 +107,10 @@ if not set -q LEAN_CTX_ACTIVE; and not set -q LEAN_CTX_DISABLED; and test (set -
 	end
 end
 # lean-ctx shell hook — end
+
+# pnpm
+set -gx PNPM_HOME "/home/manu/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end

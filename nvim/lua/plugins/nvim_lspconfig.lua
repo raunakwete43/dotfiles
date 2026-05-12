@@ -70,6 +70,21 @@ return {
 
     ---@type table<string, vim.lsp.Config>
     local servers = {
+      lua_ls = {
+        on_attach = nvlsp.on_attach,
+        capabilities = nvlsp.capabilities,
+        on_init = nvlsp.on_init,
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim" },
+            },
+            completion = {
+              callSnippet = "Replace",
+            },
+          },
+        },
+      },
       clangd = {
         on_attach = nvlsp.on_attach,
         capabilities = nvlsp.capabilities,
