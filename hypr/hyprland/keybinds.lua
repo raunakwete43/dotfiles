@@ -21,7 +21,7 @@ hl.bind("SUPER + T", hl.dsp.layout("togglesplit"))
 hl.bind(
 	"SUPER + F",
 	hl.dsp.window.fullscreen({
-		mode = "fullscreen",
+		mode = "maximized",
 		action = "toggle",
 	})
 )
