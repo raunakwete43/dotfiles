@@ -53,7 +53,8 @@ function lean-ctx-on
 	end
 	alias k '_lc kubectl'
 	set -gx LEAN_CTX_ENABLED 1
-	isatty stdout; and echo 'lean-ctx: ON (track mode — full output, stats recorded)'
+	isatty stdout;
+  # isatty stdout; and echo 'lean-ctx: ON (track mode — full output, stats recorded)'
 end
 
 function lean-ctx-off
@@ -73,7 +74,8 @@ function lean-ctx-mode
 				end
 			alias k '_lc_compress kubectl'
 			set -gx LEAN_CTX_ENABLED 1
-			isatty stdout; and echo 'lean-ctx: COMPRESS mode (all output compressed)'
+      isatty stdout;
+			# isatty stdout; and echo 'lean-ctx: COMPRESS mode (all output compressed)'
 		case track
 			lean-ctx-on
 		case off

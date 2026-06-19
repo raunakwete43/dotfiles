@@ -6,6 +6,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("/usr/libexec/hyprpolkitagent")
 	hl.exec_cmd("swaync")
 	hl.exec_cmd("sh ~/.config/hypr/scripts/waybar.sh")
+	hl.exec_cmd("wl-paste --watch cliphist store")
 
 	-- hl.exec_cmd(\"bash /home/manu/Downloads/scripts/headphone.sh\")
 

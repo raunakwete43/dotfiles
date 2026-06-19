@@ -34,12 +34,12 @@ alias activate_fish='source ~/.config/fish/config.fish'
 
 
 #list
-alias ls='lsd'
-alias la='lsd -a'
-alias ll='lsd -al'
+alias ls='eza --icons always'
+alias la='eza --icons always -a'
+alias ll='eza --icons always -al'
 alias l='ls'
-alias l.="lsd -A | egrep '^\.'"
-alias listdir="lsd -d */ > list"
+alias l.="eza --icons always -A | egrep '^\.'"
+alias listdir="eza --icons always */ > list"
 
 #speedtest
 alias speed='~/Downloads/scripts/speedtest'
@@ -97,3 +97,6 @@ alias jctl="journalctl -p 3 -xb"
 
 #NVME SMART Dashboard
 alias nvme-web-dash="~/Projects/Python/dashboard-nvme/.venv/bin/python3 ~/Projects/Python/dashboard-nvme/main.py"
+
+# Zed EDITOR
+alias zed="zeditor ."

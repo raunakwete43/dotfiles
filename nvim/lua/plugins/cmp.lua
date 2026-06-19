@@ -43,5 +43,4 @@ return {
   opts = function()
     return require "configs.cmp"
   end,
-
 }

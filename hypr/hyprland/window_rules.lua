@@ -16,12 +16,12 @@ hl.window_rule({
 })
 
 -- Browsers → workspace 2
-hl.window_rule({
-	match = {
-		class = "(.*)(browser)$",
-	},
-	workspace = "2 silent",
-})
+-- hl.window_rule({
+-- 	match = {
+-- 		class = "(.*)(browser)$",
+-- 	},
+-- 	workspace = "2 silent",
+-- })
 
 -- App launcher
 hl.window_rule({

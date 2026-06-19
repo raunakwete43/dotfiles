@@ -7,9 +7,11 @@ local clipboard = "bash ~/Downloads/scripts/wayland-clipboard.sh"
 local touchpad = "bash ~/Downloads/scripts/touchpad_hypr.sh"
 local browser = "thorium-browser-avx2"
 local private_browser = "brave --incognito"
+local high_res = "bash ~/.config/hypr/scripts/resolution.sh"
 
 -- Basic
 hl.bind("SUPER + Return", hl.dsp.exec_cmd(terminal))
+hl.bind("SUPER + ALT + D", hl.dsp.exec_cmd(high_res))
 hl.bind("SUPER + Q", hl.dsp.window.close())
 hl.bind("SUPER + X", hl.dsp.exec_cmd(logout))
 hl.bind("SUPER + SHIFT + Return", hl.dsp.exec_cmd(fileManager))
