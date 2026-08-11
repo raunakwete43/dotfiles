@@ -168,7 +168,7 @@
     // "thermal-zone": 2,
     "hwmon-path": "$HWMON_PATH",
     "interval": 2,
-    "critical-threshold": 80,
+    "critical-threshold": 85,
     "format-critical": " {temperatureC}°C",
     "format": " {temperatureC}°C",
     "format-icons": ["", ""]
