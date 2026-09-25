@@ -6,7 +6,7 @@ set -u
 # fanctl - Simple ASUS EC fan curve controller
 # ============================================================
 
-RPMCTL="./rpmctl.sh"
+RPMCTL="/home/manu/Downloads/scripts/rpmctl.sh"
 POLL_INTERVAL=1
 
 # Active profile when started without an explicit profile.
@@ -27,13 +27,14 @@ DEFAULT_PROFILE="balanced"
 
 BALANCED_CURVE=(
     "55:20"
-    "60:30"
-    "65:45"
-    "70:55"
-    "75:60"
-    "80:70"
-    "85:80"
+    "60:25"
+    "65:30"
+    "70:40"
+    "75:50"
+    "80:60"
+    "85:70"
     "90:90"
+    "95:100"
 )
 
 # ------------------------------------------------------------

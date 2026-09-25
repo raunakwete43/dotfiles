@@ -100,3 +100,5 @@ alias nvme-web-dash="~/Projects/Python/dashboard-nvme/.venv/bin/python3 ~/Projec
 
 # Zed EDITOR
 alias zed="zeditor ."
+
+alias rustinfo="sudo /home/manu/.cargo/bin/rustinfo"

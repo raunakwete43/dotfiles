@@ -6,7 +6,7 @@ MONITOR="eDP-1"
 CURRENT_SCALE="$(hyprctl monitors "$MONITOR" \
     | awk '/scale:/ {print $2}')"
 
-if [[ "$CURRENT_SCALE" == "1.50" ]]; then
+if [[ "$CURRENT_SCALE" == "1.5" ]]; then
     TARGET_SCALE="1"
 else
     TARGET_SCALE="1.5"

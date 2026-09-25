@@ -243,32 +243,23 @@ static int set_fan_speed(unsigned int percent) {
   }
 
   /*
-   * Convert:
-   *
-   *     0-100%
-   *
-   * to:
-   *
-   *     0-255
-   *
-   * Rounded to nearest integer.
+   * Convert 0-100% to 0-255 PWM.
    */
   uint8_t pwm = (uint8_t)((percent * 255U + 50U) / 100U);
 
   printf("Setting ASUS fan speed\n");
   printf("----------------------\n");
-  printf("Fan index : 0\n");
-  printf("Speed     : %u%%\n", percent);
-  printf("PWM       : %u / 255 (0x%02X)\n\n", pwm, pwm);
+  printf("Fans       : 0 + 1\n");
+  printf("Speed      : %u%%\n", percent);
+  printf("PWM        : %u / 255 (0x%02X)\n\n", pwm, pwm);
 
   /*
-   * Step 1:
-   *
-   * HealthyTable_SetFanIndex(0)
-   *
-   * DD 82 32 00
+   * ------------------------------------------------------------
+   * FAN 0
+   * ------------------------------------------------------------
    */
-  printf("[1/3] Selecting fan index 0\n");
+
+  printf("[1/5] Selecting fan index 0\n");
   printf("      DD 82 32 00\n");
 
   ret = healthy_table_set_fan_index(0);
@@ -277,13 +268,12 @@ static int set_fan_speed(unsigned int percent) {
     return ret;
 
   /*
-   * Step 2:
-   *
-   * HealthyTable_SetFanTestMode(1)
-   *
-   * DD 82 31 01
+   * ------------------------------------------------------------
+   * Enable manual/test mode
+   * ------------------------------------------------------------
    */
-  printf("[2/3] Enabling manual/test mode\n");
+
+  printf("[2/5] Enabling manual/test mode\n");
   printf("      DD 82 31 01\n");
 
   ret = healthy_table_set_fan_test_mode(1);
@@ -292,32 +282,59 @@ static int set_fan_speed(unsigned int percent) {
     return ret;
 
   /*
-   * Step 3:
-   *
-   * HealthyTable_SetFanPwmDuty(pwm)
-   *
-   * DD 82 35 XX
+   * Set PWM for fan 0.
    */
-  printf("[3/3] Setting PWM\n");
+
+  printf("[3/5] Setting PWM for fan 0\n");
   printf("      DD 82 35 %02X\n", pwm);
 
   ret = healthy_table_set_fan_pwm(pwm);
 
   if (ret) {
-    /*
-     * We entered manual mode but failed to set PWM.
-     *
-     * Try to give control back to the firmware.
-     */
-    fprintf(stderr, "\nPWM write failed. "
+    fprintf(stderr, "\nPWM write failed for fan 0. "
                     "Attempting to restore automatic control.\n");
 
     (void)healthy_table_set_fan_test_mode(0);
-
     return ret;
   }
 
-  printf("\nFan speed set successfully.\n");
+  /*
+   * ------------------------------------------------------------
+   * FAN 1
+   * ------------------------------------------------------------
+   */
+
+  printf("[4/5] Selecting fan index 1\n");
+  printf("      DD 82 32 01\n");
+
+  ret = healthy_table_set_fan_index(1);
+
+  if (ret) {
+    fprintf(stderr, "\nFailed to select fan 1. "
+                    "Attempting to restore automatic control.\n");
+
+    (void)healthy_table_set_fan_test_mode(0);
+    return ret;
+  }
+
+  /*
+   * Set PWM for fan 1.
+   */
+
+  printf("[5/5] Setting PWM for fan 1\n");
+  printf("      DD 82 35 %02X\n", pwm);
+
+  ret = healthy_table_set_fan_pwm(pwm);
+
+  if (ret) {
+    fprintf(stderr, "\nPWM write failed for fan 1. "
+                    "Attempting to restore automatic control.\n");
+
+    (void)healthy_table_set_fan_test_mode(0);
+    return ret;
+  }
+
+  printf("\nFan 0 and fan 1 speed set successfully.\n");
 
   return 0;
 }
@@ -325,6 +342,7 @@ static int set_fan_speed(unsigned int percent) {
 /*
  * Return fan control to ASUS firmware.
  */
+
 static int set_fan_auto(void) {
   int ret;
 

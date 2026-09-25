@@ -12,6 +12,26 @@ hl.curve("myBezier", {
 	},
 })
 
+-- local anims = {
+-- 	{ leaf = "windowsIn", speed = 7, style = "popin 80%" },
+-- 	{ leaf = "windowsOut", speed = 7, style = "popin 80%" },
+-- 	{ leaf = "windowsMove", speed = 4 },
+-- 	{ leaf = "fade", speed = 4 },
+-- 	{ leaf = "workspaces", speed = 8 },
+-- 	{ leaf = "layers", speed = 8, style = "slide" },
+-- }
+--
+-- for _, a in ipairs(anims) do
+-- 	hl.animation({
+-- 		leaf = a.leaf,
+-- 		enabled = true,
+-- 		speed = a.speed,
+-- 		bezier = "fluent_decel",
+-- 		style = a.style,
+-- 	})
+-- end
+
+--
 hl.animation({
 	leaf = "windows",
 	enabled = true,
@@ -51,6 +71,6 @@ hl.animation({
 hl.animation({
 	leaf = "workspaces",
 	enabled = true,
-	speed = 6,
+	speed = 8,
 	bezier = "default",
 })

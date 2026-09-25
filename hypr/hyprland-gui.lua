@@ -3,14 +3,3 @@
 -- Environment
 hl.env("XCURSOR_THEME", "Sweet-cursors")
 hl.env("XCURSOR_SIZE", "24")
-
--- Monitors
-hl.monitor({
-    output = "eDP-1",
-    mode = "2880x1800@120.00Hz",
-    position = "0x0",
-    scale = 1.5,
-    bitdepth = 10,
-    vrr = 3,
-    cm = "srgb",
-})

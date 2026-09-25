@@ -4,7 +4,8 @@ hl.monitor({
 	position = "0x0",
 	scale = 1.5,
 	bitdepth = 10,
-	vrr = 1,
+	vrr = 3,
+	supports_hdr = 0,
 })
 
 -- hl.monitor({
@@ -20,10 +21,4 @@ hl.monitor({
 	mode = "preferred",
 	position = "auto",
 	scale = "auto",
-})
-
-hl.config({
-	misc = {
-		vrr = 1,
-	},
 })

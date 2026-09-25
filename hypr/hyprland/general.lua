@@ -19,7 +19,7 @@ hl.config({
 
 		resize_on_border = true,
 
-		allow_tearing = false,
+		allow_tearing = true,
 
 		layout = "dwindle",
 	},
@@ -44,6 +44,36 @@ hl.config({
 
 			vibrancy = 0.1696,
 		},
+	},
+})
+
+hl.config({
+	xwayland = {
+		use_nearest_neighbor = false,
+		force_zero_scaling = false,
+		create_abstract_socket = true,
+	},
+
+	cursor = {
+		no_hardware_cursors = 0,
+		enable_hyprcursor = true,
+		use_cpu_buffer = 0,
+		sync_gsettings_theme = true,
+	},
+
+	misc = {
+		vrr = 2,
+		disable_hyprland_guiutils_check = true,
+		enable_swallow = true,
+		swallow_regex = "^(Alacritty|kitty|foot|wezterm|otter-term)$",
+		disable_hyprland_logo = true,
+		disable_splash_rendering = true,
+		focus_on_activate = true,
+		animate_manual_resizes = true,
+		animate_mouse_windowdragging = true,
+		mouse_move_enables_dpms = false,
+		key_press_enables_dpms = true,
+		middle_click_paste = false,
 	},
 })
 
