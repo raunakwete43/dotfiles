@@ -7,6 +7,7 @@ hl.config({
 		left_handed = false,
 		kb_layout = "us",
 		follow_mouse = 1,
+		-- accel_profile = "flat",
 		accel_profile = "adaptive",
 
 		touchpad = {

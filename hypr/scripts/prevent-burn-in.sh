@@ -4,7 +4,7 @@ notify-send "Shifting pixels..."
 sleep 1
 
 # Render overlay over bar
-hyproled -s -a 0:0:2880:48
+hyproled -s -a 0:0:2880:45
 
 in=3
 out=3
