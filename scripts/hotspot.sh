@@ -34,7 +34,7 @@ fi
 # ---------------------------------------------------------------------------
 HOTSPOT_SSID="MyHotspot"          # Name of the hotspot network
 HOTSPOT_PASSWORD="changeme123"    # Must be at least 8 characters (WPA-PSK)
-MAIN_WIFI_IFACE="wlan0"           # The interface currently connected to wifi
+MAIN_WIFI_IFACE="wlp98s0"           # The interface currently connected to wifi
 
 # Internal names — usually no need to change these
 AP_IFACE="ap0"

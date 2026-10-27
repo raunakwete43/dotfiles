@@ -12,4 +12,4 @@ done
 envsubst < ~/.config/waybar/config_template.jsonc > ~/.config/waybar/config.jsonc
 
 # Start waybar with the substituted config
-waybar &
+~/Projects/Waybar/build/waybar &

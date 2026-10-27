@@ -5,7 +5,7 @@ local menu = "bash ~/.config/rofi/launchers/type-1/launcher.sh"
 local logout = "bash ~/.config/rofi/scripts/powermenu_wayland"
 local clipboard = "bash ~/Downloads/scripts/wayland-clipboard.sh"
 local touchpad = "bash ~/Downloads/scripts/touchpad_hypr.sh"
-local browser = "thorium-browser-avx2"
+local browser = "thorium-browser"
 local private_browser = "brave --incognito"
 local high_res = "bash ~/.config/hypr/scripts/resolution.sh"
 
@@ -21,53 +21,53 @@ hl.bind("SUPER + R", hl.dsp.exec_cmd(menu))
 hl.bind("SUPER + P", hl.dsp.window.pseudo())
 hl.bind("SUPER + T", hl.dsp.layout("togglesplit"))
 hl.bind(
-	"SUPER + F",
-	hl.dsp.window.fullscreen({
-		mode = "maximized",
-		action = "toggle",
-	})
+  "SUPER + F",
+  hl.dsp.window.fullscreen({
+    mode = "maximized",
+    action = "toggle",
+  })
 )
 hl.bind("SUPER + C", hl.dsp.window.center())
 
 -- Resize windows
 hl.bind(
-	"SUPER + SHIFT + Right",
-	hl.dsp.window.resize({
-		x = 30,
-		y = 0,
-		relative = true,
-	}),
-	{ repeating = true }
+  "SUPER + SHIFT + Right",
+  hl.dsp.window.resize({
+    x = 30,
+    y = 0,
+    relative = true,
+  }),
+  { repeating = true }
 )
 
 hl.bind(
-	"SUPER + SHIFT + Left",
-	hl.dsp.window.resize({
-		x = -30,
-		y = 0,
-		relative = true,
-	}),
-	{ repeating = true }
+  "SUPER + SHIFT + Left",
+  hl.dsp.window.resize({
+    x = -30,
+    y = 0,
+    relative = true,
+  }),
+  { repeating = true }
 )
 
 hl.bind(
-	"SUPER + SHIFT + Up",
-	hl.dsp.window.resize({
-		x = 0,
-		y = -30,
-		relative = true,
-	}),
-	{ repeating = true }
+  "SUPER + SHIFT + Up",
+  hl.dsp.window.resize({
+    x = 0,
+    y = -30,
+    relative = true,
+  }),
+  { repeating = true }
 )
 
 hl.bind(
-	"SUPER + SHIFT + Down",
-	hl.dsp.window.resize({
-		x = 0,
-		y = 30,
-		relative = true,
-	}),
-	{ repeating = true }
+  "SUPER + SHIFT + Down",
+  hl.dsp.window.resize({
+    x = 0,
+    y = 30,
+    relative = true,
+  }),
+  { repeating = true }
 )
 
 -- Move focus with mainMod + arrow keys
@@ -89,55 +89,55 @@ hl.bind("SUPER + CTRL + Down", hl.dsp.window.move({ direction = "d" }))
 
 -- Switch workspaces with mainMod + [0-9]
 for i = 1, 9 do
-	hl.bind("SUPER + " .. i, hl.dsp.focus({ workspace = tostring(i) }))
+  hl.bind("SUPER + " .. i, hl.dsp.focus({ workspace = tostring(i) }))
 end
 
 hl.bind("SUPER + 0", hl.dsp.focus({ workspace = "10" }))
 
 -- Move active window to workspace
 for i = 1, 9 do
-	hl.bind(
-		"SUPER + SHIFT + " .. i,
-		hl.dsp.window.move({
-			workspace = tostring(i),
-			follow = false,
-		})
-	)
+  hl.bind(
+    "SUPER + SHIFT + " .. i,
+    hl.dsp.window.move({
+      workspace = tostring(i),
+      follow = false,
+    })
+  )
 end
 
 hl.bind(
-	"SUPER + SHIFT + 0",
-	hl.dsp.window.move({
-		workspace = "10",
-		follow = false,
-	})
+  "SUPER + SHIFT + 0",
+  hl.dsp.window.move({
+    workspace = "10",
+    follow = false,
+  })
 )
 
 -- Special workspace
 hl.bind("SUPER + S", hl.dsp.workspace.toggle_special("magic"))
 
 hl.bind(
-	"SUPER + SHIFT + S",
-	hl.dsp.window.move({
-		workspace = "special:magic",
-		follow = false,
-	})
+  "SUPER + SHIFT + S",
+  hl.dsp.window.move({
+    workspace = "special:magic",
+    follow = false,
+  })
 )
 
 hl.bind("ALT + Tab", hl.dsp.window.cycle_next())
 
 hl.bind(
-	"ALT + SHIFT + Tab",
-	hl.dsp.window.cycle_next({
-		next = false,
-	})
+  "ALT + SHIFT + Tab",
+  hl.dsp.window.cycle_next({
+    next = false,
+  })
 )
 
 hl.bind(
-	"ALT + Tab",
-	hl.dsp.window.alter_zorder({
-		mode = "top",
-	})
+  "ALT + Tab",
+  hl.dsp.window.alter_zorder({
+    mode = "top",
+  })
 )
 
 -- Toggle previous workspace
@@ -155,15 +155,15 @@ hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Media shortcuts
 hl.bind(
-	"XF86AudioRaiseVolume",
-	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+"),
-	{ locked = true, repeating = true }
+  "XF86AudioRaiseVolume",
+  hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+"),
+  { locked = true, repeating = true }
 )
 
 hl.bind(
-	"XF86AudioLowerVolume",
-	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"),
-	{ locked = true, repeating = true }
+  "XF86AudioLowerVolume",
+  hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"),
+  { locked = true, repeating = true }
 )
 
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true })
@@ -195,43 +195,43 @@ hl.bind("SHIFT + CTRL + S", hl.dsp.exec_cmd("hyprshot -m region -o ~/Pictures/Sc
 
 -- Zoom
 hl.bind(
-	"SUPER + SHIFT + equal",
-	hl.dsp.exec_cmd(
-		"hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 1.1}')"
-	),
-	{ repeating = true }
+  "SUPER + SHIFT + equal",
+  hl.dsp.exec_cmd(
+    "hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 1.1}')"
+  ),
+  { repeating = true }
 )
 
 hl.bind(
-	"SUPER + SHIFT + minus",
-	hl.dsp.exec_cmd(
-		"hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 0.9}')"
-	),
-	{ repeating = true }
+  "SUPER + SHIFT + minus",
+  hl.dsp.exec_cmd(
+    "hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 0.9}')"
+  ),
+  { repeating = true }
 )
 
 hl.bind("SUPER + equal", hl.dsp.exec_cmd("hyprctl -q keyword cursor:zoom_factor 1"))
 
 hl.bind(
-	"SUPER + SHIFT + mouse_down",
-	hl.dsp.exec_cmd(
-		"hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 1.1}')"
-	)
+  "SUPER + SHIFT + mouse_down",
+  hl.dsp.exec_cmd(
+    "hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 1.1}')"
+  )
 )
 
 hl.bind(
-	"SUPER + SHIFT + mouse_up",
-	hl.dsp.exec_cmd(
-		"hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 0.9}')"
-	)
+  "SUPER + SHIFT + mouse_up",
+  hl.dsp.exec_cmd(
+    "hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 0.9}')"
+  )
 )
 
 hl.bind("SUPER + SHIFT + C", hl.dsp.exec_cmd("hyprpicker -a"))
 
 -- Idle inhibitor
 hl.bind(
-	"SUPER + I",
-	hl.dsp.exec_cmd(
-		[[sh -c 'pgrep hypridle >/dev/null && { pkill hypridle; notify-send "󰒳 Stay Awake ON"; } || { hypridle & notify-send "󰒲 Stay Awake OFF"; }']]
-	)
+  "SUPER + I",
+  hl.dsp.exec_cmd(
+    [[sh -c 'pgrep hypridle >/dev/null && { pkill hypridle; notify-send "󰒳 Stay Awake ON"; } || { hypridle & notify-send "󰒲 Stay Awake OFF"; }']]
+  )
 )
